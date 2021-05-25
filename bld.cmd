@@ -32,7 +32,7 @@ set __DEFAULTPLATFORM=%__PLATFORM%
 
 rem -- Try to find MSBuild.
 
-for /f %%a in ('where msbuild.exe 2^>nul') do (
+for /f "tokens=*" %%a in ('where msbuild.exe 2^>nul') do (
 	set __MSBUILD="%%a"
 	goto :gotmsbuild
 )
@@ -40,6 +40,8 @@ for /f %%a in ('where msbuild.exe 2^>nul') do (
 set __MSBUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
 if exist %__MSBUILD% goto gotmsbuild
 set __MSBUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
+if exist %__MSBUILD% goto gotmsbuild
+set __MSBUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe"
 if exist %__MSBUILD% goto gotmsbuild
 set __MSBUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
 if exist %__MSBUILD% goto gotmsbuild
@@ -63,13 +65,11 @@ if exist *.sln (
 ) else if exist .build\vs2019\*.sln (
 	for %%a in (.build\vs2019\*.sln) do (
 		set __SLN="%%a"
-		set __MSBUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
 		goto :gotsln
 	)
 ) else if exist .build\vs2017\*.sln (
 	for %%a in (.build\vs2017\*.sln) do (
 		set __SLN="%%a"
-		set __MSBUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
 		goto :gotsln
 	)
 )

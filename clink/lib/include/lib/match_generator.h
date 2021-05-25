@@ -29,3 +29,4 @@ private:
 };
 
 match_generator& file_match_generator();
+match_generator& alias_match_generator(match_generator& lua);

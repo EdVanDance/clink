@@ -616,6 +616,7 @@ bool host::edit_line(const char* prompt, str_base& out)
     if (init_editor)
     {
         editor->add_generator(lua);
+        editor->add_generator(alias_match_generator(lua));
         editor->add_generator(file_match_generator());
         if (g_classify_words.get())
             editor->set_classifier(lua);

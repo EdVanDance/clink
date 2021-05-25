@@ -205,6 +205,7 @@ project("detours")
 
 --------------------------------------------------------------------------------
 clink_lib("clink_lib")
+    includedirs("clink/app/src")
     includedirs("clink/lib/include/lib")
     includedirs("clink/core/include")
     includedirs("clink/terminal/include")
@@ -212,6 +213,7 @@ clink_lib("clink_lib")
     includedirs("readline/compat")
     files("clink/lib/src/**")
     files("clink/lib/include/**")
+    files("clink/app/src/host/doskey.cpp")
 
     includedirs("clink/lib/src")
     configuration("vs*")
