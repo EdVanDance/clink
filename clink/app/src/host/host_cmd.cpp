@@ -3,7 +3,6 @@
 
 #include "pch.h"
 #include "host_cmd.h"
-#include "doskey.h"
 #include "lib/line_buffer.h"
 #include "utils/app_context.h"
 #include "utils/hook_setter.h"
@@ -15,6 +14,7 @@
 #include <core/settings.h>
 #include <core/os.h>
 #include <core/path.h>
+#include <lib/doskey.h>
 #include <lib/line_editor.h>
 #include <lua/lua_script_loader.h>
 #include <process/hook.h>

@@ -2,10 +2,10 @@
 // License: http://opensource.org/licenses/MIT
 
 #include "pch.h"
+#include "doskey.h"
 
 #include <core/settings.h>
 #include <core/str.h>
-#include <host/doskey.h>
 
 //------------------------------------------------------------------------------
 static void use_enhanced(bool state)
